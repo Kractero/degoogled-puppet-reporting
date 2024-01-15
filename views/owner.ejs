@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head'); %>
+
+<body>
+  <main class="container">
+    <%- include('./partials/header'); %>
+    <form action="/owner" method="get">
+      <div>
+        <label class="mb-2">Puppet Name</label>
+        <input name="name" required></input>
+      </div>
+      <button type="submit" class="w-min m-auto" variant="primary">Search</button>
+    </form>
+
+    <% if (puppets && puppets.length> 0) { %>
+      <p>Puppets of <%= owner %></p>
+      <ul>
+        <% puppets.forEach(puppet=> { %>
+          <li>
+            <%= puppet.name %>
+          </li>
+          <% }); %>
+      </ul>
+      <% } %>
+  </main>
+</body>
+
+</html>

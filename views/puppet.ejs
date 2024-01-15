@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head'); %>
+
+<body>
+  <main class="container">
+    <%- include('./partials/header'); %>
+      <form action="/puppet" method="get">
+        <input label="Puppet" name="name" required></input>
+        <button type="submit" class="w-min m-auto" variant="primary">Search</button>
+      </form>
+      <% if (owner) { %>
+        <p>The owner of <%= puppet %> is <a href="https://nationstates.net/nation=<%= owner %>" target="_blank" rel="noreferrer noopener">
+            <%= owner %>
+          </a></p> <% } %>
+  </main>
+</body>
+
+</html>

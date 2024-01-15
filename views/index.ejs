@@ -1,37 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Puppet Reporter</title>
-  <link href="./output.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-</head>
+<%- include('./partials/head'); %>
 
 <body>
   <main class="container">
     <nav>
       <a href="/login">Admin</a>
     </nav>
-    <header>
-      <hgroup>
-        <h1>Puppet Reporter</h1>
-        <p>Tracking known puppets in the NationStates card game.</p>
-      </hgroup>
-    </header>
+    <%- include('./partials/header'); %>
     <div>
-      <a href="/puppet" role="button">
-        Search Puppets
-      </a>
-      <a href="/puppet" role="button">
-        Search Owners
-      </a>
-      <a href="/submit" role="button">
-        Submit Puppets
-      </a>
-    </div>
-    <div class="mt-20">
       <% if (owners && owners.length> 0) { %>
         <p class="mb-4 text-lg"><span class="font-semibold">Owner Count:</span> <%= owners.length %></p>
         <table>
