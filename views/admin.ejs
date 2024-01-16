@@ -49,6 +49,37 @@
               <% }); %>
           </div>
           <% } %>
+
+          <h4>SQL Writer</h4>
+          <form action="/admin/query" method="post">
+            <label for="field">Select Field:</label>
+            <select id="field" name="field">
+              <option value="*">*</option>
+              <option value="name">Name</option>
+              <option value="owner">Owner</option>
+            </select>
+
+            <label for="comparison">Compare Value:</label>
+            <select id="comparison" name="comparison">
+              <option value="name">Name</option>
+              <option value="owner">Owner</option>
+            </select>
+
+            <label for="condition">Select Condition:</label>
+            <select id="condition" name="condition">
+              <option value="=">Equals</option>
+              <option value="LIKE">Contains</option>
+            </select>
+
+            <label for="value">Enter Value:</label>
+            <input type="text" id="value" name="value" required>
+
+            <button type="submit">Run Query</button>
+          </form>
+
+          <% if (queryResults) { %>
+            <pre class="h-max"><%= JSON.stringify(queryResults, null, 2) %></pre>
+          <% } %>
     </main>
   </body>
 
