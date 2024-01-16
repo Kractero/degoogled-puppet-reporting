@@ -7,7 +7,10 @@
   <main class="container">
     <%- include('./partials/header'); %>
       <form action="/puppet" method="get">
-        <input label="Puppet" name="name" required></input>
+        <div>
+          <label class="mb-2">Puppet Name</label>
+          <input name="name" required></input>
+        </div>
         <button type="submit" class="w-min m-auto" variant="primary">Search</button>
       </form>
       <% if (owner) { %>

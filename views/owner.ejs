@@ -8,21 +8,25 @@
     <%- include('./partials/header'); %>
     <form action="/owner" method="get">
       <div>
-        <label class="mb-2">Puppet Name</label>
+        <label class="mb-2">Owner Name</label>
         <input name="name" required></input>
       </div>
       <button type="submit" class="w-min m-auto" variant="primary">Search</button>
     </form>
 
     <% if (puppets && puppets.length> 0) { %>
-      <p>Puppets of <%= owner %></p>
-      <ul>
+      <p>Puppets of <a href="https://nationstates.net/nation=<%= owner %>" target="_blank" rel="noreferrer noopener">
+        <%= owner %>
+      </a>
+      <ol class="ml-4 list-decimal">
         <% puppets.forEach(puppet=> { %>
           <li>
-            <%= puppet.name %>
+            <a href="https://nationstates.net/nation=<%= puppet.name %>" target="_blank" rel="noreferrer noopener">
+              <%= puppet.name %>
+            </a>
           </li>
           <% }); %>
-      </ul>
+      </ol>
       <% } %>
   </main>
 </body>
