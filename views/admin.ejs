@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head'); %>
+
+  <body>
+    <main class="container">
+
+      <%- include('./partials/header'); %>
+
+        <h3> Hello <%= user %>! You have <%= submissions.length %> puppet submissions to review!</h3>
+        <% if (submissions && submissions.length> 0) { %>
+          <div class="flex flex-wrap gap-4">
+            <% submissions.forEach(submission=> { %>
+              <div>
+                <div class="flex justify-between">
+                  <form action="/admin/add" method="post">
+                    <button type="submit" href="/add">
+                      Add
+                    </button>
+                    <input type="hidden" name="name" value="<%= submission.name %>" />
+                    <input type="hidden" name="owner" value="<%= submission.owner %>" />
+                  </form>
+                  <form action="/admin/delete" method="post">
+                    <button type="submit" href="/add">
+                      Delete
+                    </button>
+                    <input type="hidden" name="name" value="<%= submission.name %>" />
+                    <input type="hidden" name="owner" value="<%= submission.owner %>" />
+                  </form>
+                </div>
+                <div class="p-4 rounded-md bg-slate-700 w-64 h-96 overflow-y-scroll flex-wrap break-words">
+                  <p class="text-center">
+                    <a target="_blank" rel="noreferrer noopener"
+                      href="https://nationstates.net/nation=<%= submission.name %>">
+                      <%= submission.name %> (<%= submission.owner.length %>)
+                    </a>
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <% submission.owner.forEach(puppet=> { %>
+                      <a class="mb-0" target="_blank" rel="noreferrer noopener"
+                        href="https://nationstates.net/nation=<%= puppet %>">
+                        <%= puppet %>
+                      </a>
+                      <% }); %>
+                  </div>
+                </div>
+              </div>
+              <% }); %>
+          </div>
+          <% } %>
+    </main>
+  </body>
+
+</html>
