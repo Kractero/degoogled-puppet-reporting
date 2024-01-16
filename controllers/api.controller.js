@@ -12,8 +12,12 @@ export const getPuppetOwner = (req, res) => {
 export const getOwnersPuppets = (req, res) => {
   const owner = req.params.name
   const record = db.prepare('SELECT name FROM puppets WHERE owner COLLATE NOCASE = ?;').all(owner);
-  console.log(record)
   return res.json({
     "puppets": record ? record : "No owner found"
   })
+}
+
+export const getAll = (req, res) => {
+  const record = db.prepare('SELECT * FROM puppets').all();
+  return res.json(record)
 }

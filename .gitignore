@@ -4,3 +4,4 @@ __pycache__
 node_modules
 *.webm
 output.css
+index.html
