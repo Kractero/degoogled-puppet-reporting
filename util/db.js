@@ -19,3 +19,17 @@ const createTable = `
 `
 
 db.exec(createTable)
+
+export const submissions = db.prepare('SELECT * from submissions').all().map(submission => {
+  return {
+    name: submission.name,
+    owner: submission.owner.split('\n').map(pup => pup.replace('\r', ''))
+  }
+});
+
+export const displaySubmissions = db.prepare('SELECT * from submissions').all().map(submission => {
+  return {
+    name: submission.name,
+    owner: submission.owner.split(',').map(pup => pup.replace('\r', '')).filter(pup => pup)
+  }
+});

@@ -8,7 +8,7 @@
 
     <%- include('./partials/header'); %>
 
-    <a class="mb-4" href="/login" role="butotn">
+    <a class="mb-4" href="/admin" role="butotn">
       Manage Submission
     </a>
 
@@ -20,7 +20,7 @@
           <div class="p-4 rounded-md bg-slate-700 w-64 h-96 overflow-y-scroll flex-wrap break-words">
             <p class="text-center">
               <a target="_blank" rel="noreferrer noopener" href="https://nationstates.net/nation=<%= submission.name %>"
-                ><%= submission.name %>
+                ><%= submission.name %> (<%= submission.owner.length %>)
               </a>
             </p>
             <div class="flex flex-wrap gap-2">
