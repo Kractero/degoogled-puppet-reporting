@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head'); %>
+
+<body>
+  <main class="container">
+
+    <%- include('./partials/header'); %>
+
+    <h2 class="text-center">Submit Puppets</h2>
+    <form action="/submit" method="get">
+      <div>
+        <label class="mb-2">Main Name</label>
+        <input name="main" required></input>
+      </div>
+      <div>
+        <label class="mb-2">Puppets (one per line)</label>
+        <textarea class="h-96" name="puppets" required></textarea>
+      </div>
+      <button type="submit" class="w-min m-auto" variant="primary">Submit</button>
+    </form>
+    <% if (success) { %>
+      <p class="text-center"><%= success %></p> <% } %>
+  </main>
+</body>
+
+</html>

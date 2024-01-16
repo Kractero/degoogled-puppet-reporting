@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head'); %>
+
+<body>
+  <main class="container">
+
+    <%- include('./partials/header'); %>
+
+    <a class="mb-4" href="/login" role="butotn">
+      Manage Submission
+    </a>
+
+    <h2 class="mb-3">Submission Queue</h2>
+
+    <% if (submissions && submissions.length> 0) { %>
+      <div class="flex flex-wrap gap-4">
+        <% submissions.forEach(submission=> { %>
+          <div class="p-4 rounded-md bg-slate-700 w-64 h-96 overflow-y-scroll flex-wrap break-words">
+            <p class="text-center">
+              <a target="_blank" rel="noreferrer noopener" href="https://nationstates.net/nation=<%= submission.name %>"
+                ><%= submission.name %>
+              </a>
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <% submission.owner.forEach(puppet=> { %>
+                <a class="mb-0" target="_blank" rel="noreferrer noopener" href="https://nationstates.net/nation=<%= puppet %>">
+                  <%= puppet %>
+                </a>
+                <% }); %>
+            </div>
+          </div>
+          <% }); %>
+        </div>
+      <% } %>
+  </main>
+</body>
+
+</html>
